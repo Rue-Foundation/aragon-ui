@@ -1,4 +1,5 @@
 /* @flow */
+import type { Node } from 'react'
 import React from 'react'
 import styled from 'styled-components'
 import theme from '../../theme'
@@ -26,6 +27,7 @@ const StyledActionButton = styled(Button)`
 `
 
 type Props = {
+  actionButton: Node,
   actionText: string,
   icon: string,
   onActivate: mixed,
@@ -34,6 +36,7 @@ type Props = {
 }
 
 const DefaultProps = {
+  actionButton: StyledActionButton,
   title: 'Nothing here.',
 }
 
@@ -43,6 +46,7 @@ const EmptyStateCard = ({
   onActivate,
   text,
   title,
+  actionButton: ActionButton,
   ...props
 }: Props) => (
   <StyledCard {...props}>
@@ -52,9 +56,9 @@ const EmptyStateCard = ({
         {title}
       </StyledHeading>
       <Text>{text}</Text>
-      <StyledActionButton mode="strong" onClick={onActivate}>
+      <ActionButton mode="strong" onClick={onActivate}>
         {actionText}
-      </StyledActionButton>
+      </ActionButton>
     </section>
   </StyledCard>
 )
